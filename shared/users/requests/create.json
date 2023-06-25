@@ -1,0 +1,11 @@
+{
+  "data": {
+    "type": "user",
+    "attributes": {
+      "first_name": "Ion",
+      "last_name": "Popescu",
+      "email": "ion.popescu@agilefreaks.com",
+      "age": 42
+    }
+  }
+}

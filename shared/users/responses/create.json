@@ -1,0 +1,15 @@
+{
+  "data": {
+    "id": "{id}",
+    "type": "user",
+    "attributes": {
+      "first_name": "Ion",
+      "last_name": "Popescu",
+      "email": "ion.popescu@agilefreak.com",
+      "age": 42
+    },
+    "links": {
+      "self": "{host}/v1/user/{id}"
+    }
+  }
+}

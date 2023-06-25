@@ -1,0 +1,6 @@
+en:
+  api:
+    errors:
+      rules:
+        user_id:
+          exists: "the user ID does not exist"

@@ -1,0 +1,84 @@
+require:
+  - rubocop-rspec
+  - rubocop-performance
+
+AllCops:
+  NewCops: enable
+
+  Exclude:
+    - 'docs/**/*.rb'
+    - 'docs/Vagrantfile'
+    - 'docs/vendor/**/*'
+    - 'docs/Gemfile'
+    - 'vendor/**/*'
+    - 'shared/route_helpers.rb'
+    - 'db/sample_data.rb'
+    - 'db/sample_data/helpers.rb'
+    - 'features/support/setup_data.rb'
+
+RSpec/ExampleLength:
+  Max: 10
+
+RSpec/NestedGroups:
+  Max: 5
+
+RSpec/MultipleMemoizedHelpers:
+  AllowSubject: true
+
+Metrics/BlockLength:
+  Exclude:
+    - '**/*_spec.rb'
+    - 'web/routes/**/*.rb'
+    - 'spec/factories/**/*.rb'
+    - 'db/migrate/*.rb'
+  ExcludedMethods:
+    - 'included'
+    - 'settings'
+    - 'Api::Container.boot'
+
+Layout/LineLength:
+  Max: 160
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/ExponentialNotation:
+  Enabled: true
+
+Style/SlicingWithRange:
+  Enabled: true
+
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Naming/RescuedExceptionsVariableName:
+  PreferredName: error
+
+RSpec/FilePath:
+  CustomTransform:
+    SDGs: sdgs
+
+Style/Alias:
+  Exclude:
+    - 'db/migrate/*.rb'

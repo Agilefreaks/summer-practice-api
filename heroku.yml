@@ -1,0 +1,14 @@
+build:
+  docker:
+    web: Dockerfile
+  config:
+    HOST_URL: https://agilefreaks.com
+release:
+  command:
+    - bundle exec rake deploy:release_tasks
+  image: web
+run:
+  web:
+    command:
+      - bundle exec rackup --port $PORT -o 0.0.0.0 config.ru
+    image: web

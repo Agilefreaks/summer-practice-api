@@ -1,0 +1,7 @@
+{
+  "data": {
+    "type": "user",
+    "id": "{id}",
+    "attributes": "{attributes}:non-string"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "api",
+  "environments": {
+    "test": {
+      "stack": "heroku-22",
+      "addons": ["heroku-postgresql:in-dyno"],
+      "buildpacks": [
+        { "url": "heroku/nodejs" },
+        { "url": "heroku/ruby" }
+      ],
+      "scripts": {
+        "test-setup": "bundle exec rake deploy:test_setup && BUNDLE_GEMFILE=docs/Gemfile bundle install --path ~/vendor/bundle-docs",
+        "test": "bundle exec rake spec_all && bundle exec rake deploy:build_docs"
+      }
+    },
+    "review": {
+      "stack": "container",
+      "addons": ["heroku-postgresql:hobby-dev"],
+      "scripts": {
+        "postdeploy": "bundle exec rake deploy:preview:set_host_url db:migrate db:seed db:sample_data"
+      }
+    }
+  }
+}

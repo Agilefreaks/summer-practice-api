@@ -1,0 +1,35 @@
+detectors:
+  FeatureEnvy:
+    enabled: true
+
+  IrresponsibleModule:
+    enabled: false
+
+  NestedIterators:
+    max_allowed_nesting: 3
+
+  TooManyStatements:
+    enabled: true
+    exclude:
+      - build
+      - initialize
+    max_statements: 5
+
+  TooManyConstants:
+    enabled: true
+    exclude:
+      - Types
+
+  RepeatedConditional:
+    enabled: true
+    max_ifs: 3
+
+exclude_paths:
+  - docs
+  - spec/lib
+  - shared
+  - db/sample_data.rb
+  - db/sample_data/helpers.rb
+  - features/support/setup_data.rb
+  - lib/env_prefixing.rb
+  - vendor

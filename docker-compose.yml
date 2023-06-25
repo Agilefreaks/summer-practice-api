@@ -1,0 +1,40 @@
+version: "3.8"
+
+volumes:
+  pgdata:
+  bundle_path:
+
+services:
+  api:
+    image: summer_practice_api
+    container_name: summer_practice_api
+    build: .
+    command: rerun -b "bundle exec rackup --port 7000 -o 0.0.0.0 config.ru"
+    ports:
+      - 7000:7000
+    volumes:
+      - .:/app
+      - bundle_path:/bundle
+    environment:
+      - BUNDLE_PATH=/bundle/vendor
+    depends_on:
+      - summer_practice_api_db
+  api_docs:
+    image: summer_practice_api
+    container_name: summer_practice_api_docs
+    command: bash -c "cd docs && bundle exec middleman server"
+    environment:
+      - HOST_URL
+    ports:
+      - 4567:4567
+    volumes:
+      - .:/app
+  summer_practice_api_db:
+    image: postgres:13.11-alpine
+    container_name: summer_practice_api_db
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - 5437:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
