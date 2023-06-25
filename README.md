@@ -7,33 +7,23 @@ Agilefreaks Webiste: [agilefreaks.com](https://agilefreaks.com)
 
 ## Setup
 
-Step 1. Create development environment variables file
-
-> cp .env.example .env
-
-> NOTE: Please review and update the environment variables inside `.env` file, where is necessary. 
-
-Step 3. Build docker image
+Step 1. Build docker image
 
 > docker compose build api 
 
-Step 3. Install dependencies
+Step 2. Install dependencies
 
 > docker compose run api bundle install
 
-Step 4. Create development database
+Step 3. Create development database
 
-> docker compose run api rake db:create db:migrate db:seed
+> docker compose run api rake db:create db:migrate db:seed db:sample_data
 
-Step 5. Seed database with sample data
-
-> docker compose run api rake db:sample_data
-
-Step 6. Build dependencies
+Step 4. Build dependencies
 
 > docker compose build
 
-Step 7. Generate routes
+Step 5. Generate routes
 
 > docker compose run api rake routes:generate
 
@@ -73,11 +63,7 @@ You should be able to see api docs and do requests on `http://localhost:4000`
 
 ## Specs
 
-Step 1 Create test environment variables file
-
-> cp .env.example .env.test
-
-Step 2 Prepare test environment database
+Step 1 Prepare test environment database
 
 > docker compose run api rake db:test:prepare RACK_ENV='test'
 
