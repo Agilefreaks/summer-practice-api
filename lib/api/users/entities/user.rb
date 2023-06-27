@@ -9,11 +9,6 @@ module Api
     module Entities
       class User < Dry::Struct
         attribute :id, Types::Integer
-        attribute :first_name, Types::String
-        attribute :last_name, Types::String
-        attribute :email, Types::String
-        attribute :avatar_url, Types::String
-        attribute :age, Types::Integer
       end
     end
   end

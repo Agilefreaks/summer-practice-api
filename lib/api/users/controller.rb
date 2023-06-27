@@ -8,45 +8,11 @@ require 'deserializers/user_deserializer'
 module Api
   module Users
     class Controller < Api::Controller
-      include Import[get_operation: 'users.operations.get']
-      include Import[filter_transaction: 'users.transactions.filter']
-      include Import[create_transaction: 'users.transactions.create']
-      include Import[update_transaction: 'users.transactions.update']
-      include Import[delete_transaction: 'users.transactions.delete']
+      include Import[example_transaction: 'users.transactions.example']
 
-      def index(params)
-        filter_transaction.call(params) do |monad|
-          monad.success { |users| get_response(users) }
-          handle(monad)
-        end
-      end
-
-      def show(user_id)
-        get_operation.call(user_id) do |monad|
-          monad.success { |user| get_response(user) }
-          handle(monad)
-        end
-      end
-
-      def create(params)
-        create_transaction.call(Deserializers::UserDeserializer.call(params['data'])) do |monad|
-          monad.success { |user| create_response(user) }
-          handle(monad)
-        end
-      end
-
-      def update(user_id, params)
-        input = Deserializers::UserDeserializer.call(params['data'])
-
-        update_transaction.call(input.merge(user_id: user_id)) do |monad|
-          monad.success { |user| get_response(user) }
-          handle(monad)
-        end
-      end
-
-      def delete(user_id)
-        delete_transaction.call(id: user_id) do |monad|
-          monad.success { |_| build_response(nil, status: :no_content) }
+      def example(params)
+        example_transaction.call(params) do |monad|
+          monad.success { |users| get_response(users) || create_response(users) }
           handle(monad)
         end
       end

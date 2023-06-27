@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
 require 'api/contract'
+require 'api/import'
 
 module Api
   module Users
     module Validations
-      class DeleteContract < Api::Contract
+      class ExampleContract < Api::Contract
         params do
-          required(:id).value(:integer)
+          required(:example).filled(:string)
         end
       end
     end

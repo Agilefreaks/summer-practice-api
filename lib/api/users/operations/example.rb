@@ -6,11 +6,11 @@ require 'api/import'
 module Api
   module Users
     module Operations
-      class Create < Api::Operation
+      class Example < Api::Operation
         include Import[user_repository: 'users.repositories.user']
 
-        def call(new_user)
-          user_repository.create(new_user).to_result
+        def call(params)
+          user_repository.example(params)
         end
       end
     end
