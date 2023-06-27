@@ -1,6 +1,6 @@
 {
   "data": {
-    "id": "1",
+    "id": "42",
     "type": "user",
     "attributes": {
       "first_name": "Ion",
@@ -9,7 +9,7 @@
       "age": 42
     },
     "links": {
-      "self": "{host}/v1/users/{id}"
+      "self": "{host}/v1/users/42"
     }
   }
 }

@@ -8,6 +8,7 @@ toc_footers:
   - <a href='https://agilefreaks.com'>agilefreaks.com</a>
 
 includes:
+  - users
   - errors
 
 search: true
