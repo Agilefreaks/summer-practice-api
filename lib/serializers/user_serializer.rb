@@ -9,7 +9,7 @@ module Api
   module Serializers
     class UserSerializer
       include FastJsonapi::ObjectSerializer
-      attributes :first_name, :last_name, :email, :age
+      attributes :first_name, :last_name, :email, :avatar_url, :age
 
       link(:self) { |object| UrlHelpers.route_for(:user, id: object.id) }
     end

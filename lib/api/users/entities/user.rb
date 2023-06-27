@@ -12,6 +12,7 @@ module Api
         attribute :first_name, Types::String
         attribute :last_name, Types::String
         attribute :email, Types::String
+        attribute :avatar_url, Types::String
         attribute :age, Types::Integer
       end
     end

@@ -11,6 +11,7 @@ module Api
           required(:first_name).filled(:string)
           required(:last_name).filled(:string)
           required(:email).filled(:string)
+          required(:avatar_url).filled(:string)
           required(:age).filled(:integer)
         end
       end
