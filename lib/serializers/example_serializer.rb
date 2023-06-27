@@ -7,11 +7,11 @@ require 'url_helpers'
 
 module Api
   module Serializers
-    class UserSerializer
+    class ExampleSerializer
       include FastJsonapi::ObjectSerializer
-      attributes :first_name, :last_name, :email, :avatar_url, :age
+      attributes :example
 
-      link(:self) { |object| UrlHelpers.route_for(:user, id: object.id) }
+      link(:self) { |object| UrlHelpers.route_for(:example, id: object.id) }
     end
   end
 end
