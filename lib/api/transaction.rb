@@ -31,7 +31,9 @@ module Api
 
       class << self
         def filter_attributes(params)
-          (params.deep_symbolize_keys[:filter] || {}).keys
+          filter = (params.deep_symbolize_keys[:filter] || {})
+
+          filter.is_a?(Hash) ? filter.keys : {}
         end
       end
     end

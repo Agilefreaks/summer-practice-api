@@ -126,3 +126,12 @@ curl -X GET <%= route_for(:users) %> \
 Link                | Description
 --------------------|-----------
 self                | Resource get link
+
+### Filtering
+
+You can filter users by the following attributes: `first_name`.
+
+Parameter                      | Required | Description
+------------------------------ | ------- | -----------
+filter                         | false  | Object specifying how to filter the result set.
+filter[attribute]              | true   | Specifies the attribute on which the filtering will be done
