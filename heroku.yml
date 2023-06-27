@@ -2,7 +2,7 @@ build:
   docker:
     web: Dockerfile
   config:
-    HOST_URL: https://agilefreaks.com
+    HOST_URL: https://summer-practice-api-476aeaf072ec.herokuapp.com
 release:
   command:
     - bundle exec rake deploy:release_tasks
