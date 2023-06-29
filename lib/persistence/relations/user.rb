@@ -5,8 +5,8 @@ require 'persistence/relation'
 
 module Persistence
   module Relations
-    class Example < Persistence::Relation
-      schema(:example, infer: true)
+    class User < Persistence::Relation
+      schema(:users, infer: true)
     end
   end
 end

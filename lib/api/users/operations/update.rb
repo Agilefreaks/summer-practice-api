@@ -6,11 +6,12 @@ require 'api/import'
 module Api
   module Users
     module Operations
-      class Example < Api::Operation
+      class Update < Api::Operation
         include Import[user_repository: 'users.repositories.user']
 
         def call(params)
-          user_repository.example(params)
+          user_id = params.delete(:user_id)
+          user_repository.update(user_id, params)
         end
       end
     end

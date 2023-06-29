@@ -8,12 +8,22 @@ require 'deserializers/user_deserializer'
 module Api
   module Users
     class Controller < Api::Controller
-      include Import[example_transaction: 'users.transactions.example']
+      include Import[create_transaction: 'users.transactions.create']
+      include Import[update_transaction: 'users.transactions.update']
 
-      def example(params)
-        example_transaction.call(params) do |monad|
-          monad.success { |users| get_response(users) || create_response(users) }
-          handle(monad)
+      def create(params)
+        input = Deserializers::UserDeserializer.call(params['data'])
+        create_transaction.call(input) do |transaction|
+          transaction.success { |new_user| create_response(new_user) }
+          handle(transaction)
+        end
+      end
+
+      def update(id, params)
+        input = Deserializers::UserDeserializer.call(params['data'])
+        update_transaction.call(input.merge(user_id: id)) do |transaction|
+          transaction.success { |updated_user| get_response(updated_user) }
+          handle(transaction)
         end
       end
 
@@ -23,7 +33,7 @@ module Api
         json, status = serialize_response(Serializers::UserSerializer, data, { status: :created })
         build_response(json, status: status)
       end
-
+      #
       def get_response(data)
         json, status = serialize_response(Serializers::UserSerializer, data)
         build_response(json, status: status)

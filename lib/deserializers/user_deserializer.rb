@@ -6,8 +6,8 @@ require 'jsonapi/deserializable'
 
 module Api
   module Deserializers
-    class ExampleDeserializer < JSONAPI::Deserializable::Resource
-      attributes
+    class UserDeserializer < JSONAPI::Deserializable::Resource
+      attributes :first_name, :last_name, :email, :avatar_url, :age
     end
   end
 end

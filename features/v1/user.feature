@@ -2,11 +2,13 @@ Feature: V1 User
   As a api client
   I want to manage users
 
+  @focus
   Scenario: Create user
     When I create a user
     Then it should respond with created
     And the user should be returned
 
+    @focus
   Scenario: Update user
     Given a user exists
     When I update 'first_name' to 'Gigi' for that user

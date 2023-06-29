@@ -2,21 +2,26 @@
 
 module Api
   class Web
-    route 'v1/example' do |route|
-      controller_name = 'example.controller'
+    route 'v1/users' do |route|
+      controller_name = 'users.controller'
 
       route.is do
-        # route[example]: GET /v1/example
-        route.get do
+        # route[create_user]: GET /v1/users
+        route.post do
           resolve route, controller_name do |controller|
-            controller.example(route.params)
+            controller.create(route.params)
           end
         end
       end
 
-      route.on Integer do |user_id|
+      route.on Integer do |id|
         route.is do
-          # route[create_example]: GET /v1/example/:id
+          # route[update_user]: GET /v1/example/:id
+          route.patch do
+            resolve route, controller_name do |controller|
+              controller.update(id, route.params)
+            end
+          end
         end
       end
     end
